@@ -20,7 +20,7 @@
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid px-4 px-lg-5">
+      <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#!">
           <img
             src="https://dojiw2m9tvv09.cloudfront.net/28380/1/article/4/slide19779.jpg"
@@ -61,18 +61,20 @@
         </div>
       </div>
     </nav>
-    <script>
-      (async () => {
-        try {
-          const { data } = await axios.get(
-            "http://localhost:3000/api/products"
-          );
-          console.log(data);
-          return data;
-        } catch (error) {
-          console.log(error);
-        }
-      })();
-    </script>
+    <!-- Section-->
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div
+          class="
+            row
+            gx-4 gx-lg-5
+            row-cols-2 row-cols-md-3 row-cols-xl-4
+            justify-content-center
+          "
+          id="product-container"
+        ></div>
+      </div>
+    </section>
+    <script src="assets/js/index.js"></script>
   </body>
 </html>
