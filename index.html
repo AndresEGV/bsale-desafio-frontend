@@ -14,58 +14,269 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Bsale</title>
   </head>
   <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">
-          <img
-            src="https://dojiw2m9tvv09.cloudfront.net/28380/1/article/4/slide19779.jpg"
-            alt=""
-            srcset=""
-            width="150"
-        /></a>
-
-        <div
-          class="collapse navbar-collapse text-center"
-          id="navbarSupportedContent"
-        >
-          <div class="col-md-6 mx-auto h-100 w-75">
-            <input
-              class="search-input"
-              type="text"
-              placeholder="Buscar..."
-              id="search-input"
-              onkeyup="searchProducts()"
-            />
-            <a
-              href="#"
-              class="
-                search_icon
-                d-flex
-                justify-content-center
-                align-items-center
-              "
-              ><i class="fas fa-search"></i
-            ></a>
-          </div>
-          <button class="btn btn-outline-dark" type="submit">
-            <i class="bi-cart-fill me-1"></i>
-            Cart
-            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-          </button>
-        </div>
+    <header class="sticky-top header-bg">
+      <div
+        class="
+          bg-danger
+          py-1
+          text-center text-white text-uppercase
+          header-offer
+        "
+      >
+        Pisco, snacks, licores con delivery a todo el país
       </div>
-    </nav>
+
+      <section class="container py-3">
+        <div class="row">
+          <div class="col-md-3 my-auto">
+            <img
+              src="https://dojiw2m9tvv09.cloudfront.net/28380/1/article/4/slide19779.jpg"
+              alt=""
+              srcset=""
+              width="150"
+            />
+          </div>
+          <div class="col-md-6 d-flex justify-content-center h-100 w-75">
+            <div class="searchbar pl-4 d-none d-md-block">
+              <input
+                class="search_input"
+                type="text"
+                name=""
+                placeholder="Buscar..."
+                id="search-input"
+                onkeyup="searchProducts()"
+              />
+              <a
+                href="#"
+                class="
+                  search_icon
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+                ><i class="fas fa-search"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex justify-content-end">
+            <button class="btn btn-outline-dark" type="submit">
+              <i class="bi-cart-fill me-1"></i>
+              Cart
+              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav mx-auto pt-3 h5 text-uppercase">
+                <li class="nav-item">
+                  <a class="nav-link" href="#" onclick="getAllProducts()"
+                    >Todos los productos</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('pisco')"
+                    >Pisco</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('ron')"
+                    >Ron</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('bebida')"
+                    >Bebidas</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('snack')"
+                    >Snack</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('cerveza')"
+                    >Cerveza</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('vodka')"
+                    >Vodka</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    onclick="getProductsByCategory('bebida energetica')"
+                    >Bebidas energéticas</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </section>
+    </header>
     <!-- Section-->
     <section class="py-5">
       <div class="container">
         <div class="row" id="product-container"></div>
       </div>
     </section>
+    <footer class="pt-5" id="footer">
+      <div class="container">
+        <div
+          class="row text-center text-xs-center text-sm-left text-md-left pb-3"
+        >
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5>Quienes somos</h5>
+            <ul class="list-unstyled quick-links">
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>About</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>FAQ</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Get Started</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Videos</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5>Contáctanos</h5>
+            <ul class="list-unstyled quick-links">
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>About</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>FAQ</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Get Started</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Videos</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <h5>Nuestras Redes</h5>
+            <ul class="list-unstyled quick-links">
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Home</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>About</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>FAQ</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/" target="_blank"
+                  ><i class="fa fa-angle-double-right"></i>Get Started</a
+                >
+              </li>
+              <li>
+                <a href="https://www.bsale.cl/"
+                  ><i class="fa fa-angle-double-right"></i>Imprint</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bg-dark py-3">
+        <div
+          class="
+            col-xs-12 col-sm-12 col-md-12
+            mt-2 mt-sm-2
+            text-center text-white
+          "
+        >
+          <p class="h6">© Bsale - All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
