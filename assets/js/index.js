@@ -1,3 +1,4 @@
+const api_url = "https://bsale-test-store.herokuapp.com";
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const products = await getProducts();
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const getProducts = async () => {
   try {
-    const { data } = await axios.get("http://localhost:3000/api/products");
+    const { data } = await axios.get(`${api_url}/api/products`);
     return data;
   } catch (error) {
     console.log("Error", error);
@@ -82,9 +83,7 @@ const searchProducts = async () => {
   let searchInput = document.querySelector("#search-input").value;
 
   try {
-    const { data } = await axios.get(
-      `http://localhost:3000/api/products/${searchInput}`
-    );
+    const { data } = await axios.get(`${api_url}/api/products/${searchInput}`);
     console.log(data);
     await fillProductsInCards(data);
   } catch (error) {
@@ -95,7 +94,7 @@ const getProductsByCategory = async (category) => {
   try {
     const {
       data: [{ Products }],
-    } = await axios.get(`http://localhost:3000/api/categories/${category}`);
+    } = await axios.get(`${api_url}/api/categories/${category}`);
 
     await fillProductsInCards(Products);
   } catch (error) {
