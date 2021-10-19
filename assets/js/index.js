@@ -103,6 +103,7 @@ const searchProducts = async () => {
     console.log("Error", error);
   }
 };
+// Función encargada de de traer los datos de la categpria seleccionada en el searchbar para luego llenar los datos en pantalla.
 const getProductsByCategory = async (category) => {
   try {
     const {
